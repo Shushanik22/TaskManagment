@@ -1,4 +1,5 @@
-﻿namespace TaskManagment.Interface
+﻿
+namespace TaskManagment.Interface
 {
     public interface IProjectService
     {

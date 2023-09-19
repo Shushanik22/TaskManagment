@@ -1,4 +1,4 @@
-﻿using Microsoft.Build.Evaluation;
+﻿using TaskManagment.Data.Entities;
 
 namespace TaskManagment.Data.Repositories.Interfaces
 {
