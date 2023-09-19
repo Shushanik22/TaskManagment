@@ -3,6 +3,7 @@
     public class Worker
     {
         public int Id { get; set; } 
+        public ICollection<Project> Projects { get; set; }
 
         public string FirstName { get; set; }    
 
