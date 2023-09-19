@@ -15,21 +15,26 @@ namespace TaskManagment.Data.Repositories
         public void Add(PTask task)
         {
             _context.Tasks.Add(task);
+            _context.SaveChanges();
         }
 
         public void Delete(PTask task)
         {
             _context.Tasks.Remove(task);
+            _context.SaveChanges();
         }
 
         public List<PTask> GetAll()
         {
            return _context.Tasks.ToList() ;
+            
+
         }
 
         public PTask GetById(int id)
         {
             return _context.Tasks.Find(id);
+            
         }
 
         public void SaveChanges()

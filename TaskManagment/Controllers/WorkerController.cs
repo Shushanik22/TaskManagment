@@ -2,9 +2,8 @@
 
 namespace TaskManagment.Controllers
 {
-    public class TaskController : Controller
+    public class WorkerController : Controller
     {
-        public 
         public IActionResult Index()
         {
             return View();
