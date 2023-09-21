@@ -1,4 +1,5 @@
-﻿namespace TaskManagment.Data.Entities
+﻿using TaskManagment.EnumFolder;
+namespace TaskManagment.Data.Entities
 {
     public class Project
     {
@@ -6,11 +7,11 @@
         public ICollection<PTask> pTasks { get; set; }
         public ICollection <Worker> Workers { get; set; }
 
-        public enum RoleEnum
-        {
-            Admin=1,
-            User=2
-        }
+        public int pTasKID { get; set; }
+        public RoleEnum Role { get; set; }
+
+      
+       
         public string Name { get; set; }
 
         public string Description { get; set; }
