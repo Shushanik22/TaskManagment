@@ -13,10 +13,6 @@ namespace TaskManagment.Data.Entities
 
         public string Position { get; set; }
 
-        [ForeignKey("Project")]
-        public int ProjectID { get; set; }
-
-        public Project Project { get; set; }
 
         public ContactInformation ContactInformation { get; set; }
 

@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using TaskManagment.Data;
+using TaskManagment.Data.Repositories;
+using TaskManagment.Data.Repositories.Interfaces;
+using TaskManagment.Interface;
+using TaskManagment.Service;
 
 namespace TaskManagment
 {
@@ -12,6 +16,8 @@ namespace TaskManagment
             builder.Services.AddDbContext<TaskContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("TaskDatabase")));
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IProjectService,ProjectService>();
+            builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 
             var app = builder.Build();
 

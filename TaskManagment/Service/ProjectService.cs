@@ -16,7 +16,7 @@ namespace TaskManagment.Service
             _iProjectRepository = projectRepository;
         }
 
-        public void Add(ProjectAddEditViewModelcs projectadd)
+        public void Add(ProjectAddEditViewModel projectadd)
         {
             Project project = new Project
             {
@@ -29,10 +29,10 @@ namespace TaskManagment.Service
 
             };
         }
-        public ProjectAddEditViewModelcs GetById(int id)
+        public ProjectAddEditViewModel GetById(int id)
         {
             var project = _iProjectRepository.GetById(id);
-            return new ProjectAddEditViewModelcs
+            return new ProjectAddEditViewModel
             {
                 Name = project.Name,
                 Description = project.Description,
@@ -43,7 +43,7 @@ namespace TaskManagment.Service
            
         }
 
-        public void Update(ProjectAddEditViewModelcs projectadd)
+        public void Update(ProjectAddEditViewModel projectadd)
         {
            var project = _iProjectRepository.GetById(projectadd.Id);
            
@@ -56,10 +56,10 @@ namespace TaskManagment.Service
             
         }
 
-        public List<ProjectAddEditViewModelcs> GetAll()
+        public List<ProjectAddEditViewModel> GetAll()
         {
             var data = _iProjectRepository.GetAll();
-            return data.Select(x => new ProjectAddEditViewModelcs
+            return data.Select(x => new ProjectAddEditViewModel
             {
                Name = x.Name,
                Description = x.Description,

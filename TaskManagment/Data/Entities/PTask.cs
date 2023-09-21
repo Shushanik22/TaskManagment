@@ -19,12 +19,11 @@ namespace TaskManagment.Data.Entities
         public int ProjectId { get; set; }
         public Project Project { get; set; }
 
-        public string Duration { get; set; }
+        public DateTime  DueDate { get; set; }
 
         public string DonePercentage { get; set; }
 
-        public string UserComment { get; set; }
-
+        
 
 
     }
