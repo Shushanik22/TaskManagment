@@ -43,7 +43,7 @@ namespace TaskManagment.Controllers
                 return View(projectadd);
             }
             _iprojectservice.Add(projectadd);
-            return RedirectToAction();
+            return RedirectToAction("Add");
         }
 
         private void GetProductDropdownData()
