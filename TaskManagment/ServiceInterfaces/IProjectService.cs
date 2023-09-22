@@ -10,7 +10,7 @@ namespace TaskManagment.Interface
 
         ProjectAddEditViewModel GetById(int id);
 
-        void Update(ProjectAddEditViewModel projectadd);
+       void Update(ProjectAddEditViewModel projectadd);
 
         List<ProjectAddEditViewModel> GetAll();
 

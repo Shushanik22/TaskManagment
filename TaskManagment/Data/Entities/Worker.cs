@@ -14,7 +14,7 @@ namespace TaskManagment.Data.Entities
         public string Position { get; set; }
 
 
-        public ContactInformation ContactInformation { get; set; }
+        //public ContactInformation ContactInformation { get; set; }
 
 
 

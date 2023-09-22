@@ -18,6 +18,8 @@ namespace TaskManagment
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<IProjectService,ProjectService>();
             builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+            builder.Services.AddScoped<IWorkerService, WorkerService>();
+            builder.Services.AddScoped<IWorkerRepository, WorkerRepository>();
 
             var app = builder.Build();
 

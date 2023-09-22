@@ -7,17 +7,38 @@
 <h1>Add new Project</h1>
 <form method="post">
     <div>
+        <input asp-for="Id" type="hidden"/>
         <label> ProjectName
             <input asp-for="Name" />
-        </label>          
-          
+        </label>
+        <label>
+            ProjectDescription
+            <input asp-for="Description" />
+        </label>
+        <label>
+            ProjectPicture
+            <input asp-for="Picture" />
+        </label>
+        <label>
+            TotalPercentae
+            <input asp-for="TotalPercentage" />
+        </label>
+      
+        <div>
+            @foreach (WorkerAddEditViewModel item in ViewBag.Workers)
+            {
+                <div>
+                    <label>
+
+                        <input type="checkbox" value="@item.Id" name="WorkerIds" />
+                        @item.FirstName
+
+                    </label>
+                </div>
+
+
+            }
+        <input type="submit" value="save"/> 
     </div>
-
-
-
-
-
-
-
 
 </form>
