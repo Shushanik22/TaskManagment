@@ -27,6 +27,7 @@ namespace TaskManagment.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            GetProductDropdownData();
             return View();
         }
 
