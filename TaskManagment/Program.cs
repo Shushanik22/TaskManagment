@@ -20,6 +20,8 @@ namespace TaskManagment
             builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
             builder.Services.AddScoped<IWorkerService, WorkerService>();
             builder.Services.AddScoped<IWorkerRepository, WorkerRepository>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 
             var app = builder.Build();
 

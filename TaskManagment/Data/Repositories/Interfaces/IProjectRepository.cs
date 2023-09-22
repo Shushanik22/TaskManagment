@@ -9,5 +9,6 @@ namespace TaskManagment.Data.Repositories.Interfaces
         List<Project> GetAll();
         void Delete(Project project);
         void SaveChanges();
+       
     }
 }

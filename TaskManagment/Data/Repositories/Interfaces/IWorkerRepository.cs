@@ -8,6 +8,8 @@ namespace TaskManagment.Data.Repositories.Interfaces
         Worker GetById(int id);
         List<Worker> GetAll();
         void Delete(Worker worker);
+        void AttachRange(List<Worker> workers);
+        void ChangeTracking(Worker worker);
         void SaveChanges();
     }
 }

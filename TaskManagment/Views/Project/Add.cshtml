@@ -7,22 +7,29 @@
 <h1>Add new Project</h1>
 <form method="post">
     <div>
-        <input asp-for="Id" type="hidden"/>
-        <label> ProjectName
+        
+        <label> Project Name
             <input asp-for="Name" />
         </label>
+     </div>
+     <div>
         <label>
-            ProjectDescription
+            Project Description
             <input asp-for="Description" />
         </label>
+    <div/>
+    <div>
         <label>
-            ProjectPicture
+            Project Picture
             <input asp-for="Picture" />
         </label>
+    <div/>
+    <div>
         <label>
-            TotalPercentae
+            TotalPercentage
             <input asp-for="TotalPercentage" />
         </label>
+    </div>
       
         <div>
             @foreach (WorkerAddEditViewModel item in ViewBag.Workers)
@@ -38,7 +45,7 @@
 
 
             }
-        <input type="submit" value="save"/> 
+        <input type="submit" value="Save"/> 
     </div>
 
 </form>

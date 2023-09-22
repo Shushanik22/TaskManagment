@@ -12,7 +12,7 @@ namespace TaskManagment.Data.Entities
 
         public string Description { get; set; }
 
-        public string Picture { get; set; }
+        public string  Picture { get; set; }
 
         public decimal TotalPercentage { get; set; }
        

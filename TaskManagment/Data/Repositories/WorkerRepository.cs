@@ -1,4 +1,5 @@
-﻿using TaskManagment.Data.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using TaskManagment.Data.Entities;
 using TaskManagment.Data.Repositories.Interfaces;
 
 namespace TaskManagment.Data.Repositories
@@ -13,13 +14,23 @@ namespace TaskManagment.Data.Repositories
         public void Add(Worker worker)
         {
             _context.Workers.Add(worker);
-            _context.SaveChanges();
+            //_context.SaveChanges();
+
+        }
+
+        public void AttachRange(List<Worker> workers)
+        {
+            _context.Workers.AttachRange(workers);
+        }
+        public void ChangeTracking(Worker worker)
+        {
+            _context.Entry(worker).State = EntityState.Detached;
         }
 
         public void Delete(Worker worker)
         {
             _context.Workers.Remove(worker);
-            _context.SaveChanges();
+           // _context.SaveChanges();
         }
 
         public List<Worker> GetAll()
