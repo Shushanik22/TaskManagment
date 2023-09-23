@@ -4,7 +4,7 @@ namespace TaskManagment.Data.Entities
     public class Project
     {
         public int Id { get; set; }
-        public ICollection<PTask> pTasks { get; set; }
+        public ICollection<ProjectTask> pTasks { get; set; }
         public ICollection <Worker> Workers { get; set; }
 
   

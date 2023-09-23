@@ -20,8 +20,12 @@ namespace TaskManagment.Controllers
 
         }
 
+        public IActionResult Index(ProjectListViewModel model)
+        {
+            var list=_iprojectservice.GetAll(model);
+            return View(list);
+        }
 
-     
         [HttpGet]
         public IActionResult Add()
         {

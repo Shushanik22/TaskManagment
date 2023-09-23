@@ -12,9 +12,7 @@ namespace TaskManagment.Interface
 
        void Update(ProjectAddEditViewModel projectadd);
 
-        List<ProjectAddEditViewModel> GetAll();
-
-
-
+        List<ProjectListViewModel> GetAll(ProjectListViewModel model);
+        
     }
 }

@@ -1,4 +1,5 @@
 ﻿using TaskManagment.Data.Entities;
+using TaskManagment.ViewModel;
 
 namespace TaskManagment.Data.Repositories.Interfaces
 {
@@ -6,9 +7,9 @@ namespace TaskManagment.Data.Repositories.Interfaces
     {
         void Add(Project project);
         Project GetById(int id);
-        List<Project> GetAll();
+        List<Project> GetAll(ProjectListViewModel model);
         void Delete(Project project);
-        void SaveChanges();
+      
        
     }
 }

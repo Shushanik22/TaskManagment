@@ -14,7 +14,7 @@ namespace TaskManagment.Data.Repositories
         public void Add(Worker worker)
         {
             _context.Workers.Add(worker);
-            //_context.SaveChanges();
+           
 
         }
 
@@ -30,7 +30,7 @@ namespace TaskManagment.Data.Repositories
         public void Delete(Worker worker)
         {
             _context.Workers.Remove(worker);
-           // _context.SaveChanges();
+          
         }
 
         public List<Worker> GetAll()
@@ -45,9 +45,6 @@ namespace TaskManagment.Data.Repositories
           
         }
 
-        public void SaveChanges()
-        {
-            _context.SaveChanges();
-        }
+      
     }
 }

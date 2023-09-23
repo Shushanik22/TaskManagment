@@ -19,11 +19,12 @@ namespace TaskManagment.Service
         public List<WorkerAddEditViewModel> GetAll()
         {
             var data = _workerRepository.GetAll();
-            return data.Select(x => new WorkerAddEditViewModel
+            var workers= data.Select(x => new WorkerAddEditViewModel
             {
                FirstName = x.FirstName,
                Id = x.Id,
             }).ToList();
+            return workers;
         }
 
         

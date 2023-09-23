@@ -5,12 +5,15 @@ using TaskManagment.Interface;
 using Microsoft.EntityFrameworkCore.Internal;
 using TaskManagment.Data.Repositories.Interfaces;
 using TaskManagment.Data.Entities;
+using TaskManagment.ViewModel;
 
 namespace TaskManagment.Data.Repositories
 {
     public class ProjectRepository : IProjectRepository
     {
         private readonly TaskContext _context;
+        
+
 
         public ProjectRepository(TaskContext context)
         {
@@ -20,18 +23,18 @@ namespace TaskManagment.Data.Repositories
         public void Add(Project project)
         {
             _context.Projects.Add(project);
-            _context.SaveChanges();
+           
            
         }
 
         public void Delete(Project project)
         {
             _context.Projects.Remove(project);
-            _context.SaveChanges();
+            
         }
 
 
-        public List<Project> GetAll()
+        public List<Project> GetAll(ProjectListViewModel model)
         {
             return _context.Projects.ToList();
         }
@@ -41,11 +44,7 @@ namespace TaskManagment.Data.Repositories
             return _context.Projects.Find(id);
         }
 
-        public void SaveChanges()
-        {
-            _context.SaveChanges();
-        }
-
+       
        
     }
 }

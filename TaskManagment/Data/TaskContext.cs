@@ -11,7 +11,7 @@ namespace TaskManagment.Data
         public DbSet<Project> Projects { get;set; }
 
         public DbSet<Worker> Workers { get;set;}
-        public DbSet<PTask> Tasks { get; set; }
+        public DbSet<ProjectTask> Tasks { get; set; }
 
         
 

@@ -2,7 +2,7 @@
 using TaskManagment.EnumFolder;
 namespace TaskManagment.Data.Entities
 {
-    public class PTask
+    public class ProjectTask
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -21,8 +21,7 @@ namespace TaskManagment.Data.Entities
 
         public DateTime  DueDate { get; set; }
 
-        public string DonePercentage { get; set; }
-
+      
         
 
 

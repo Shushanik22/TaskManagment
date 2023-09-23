@@ -2,7 +2,7 @@
 
 namespace TaskManagment.Interface
 {
-    public interface IPTaskService
+    public interface IProjectTaskService
     {
         void Add(TaskAddEditViewModel taskadd);
 
@@ -10,7 +10,7 @@ namespace TaskManagment.Interface
 
         void Update(TaskAddEditViewModel taskadd);
 
-        List<TaskAddEditViewModel> GetAll();
+        List<TaskAddEditViewModel> GetAll(TaskAddEditViewModel model);
 
     }
 }

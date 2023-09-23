@@ -1,0 +1,44 @@
+﻿@using TaskManagment.ViewModel
+
+@model List<ProjectListViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Workers</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.WorkerName</td>
+                    <td>
+                        <a href="#">Edit</a>
+                    </td>
+                    <td>
+                        <a href="#">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+   
+</body>
+</html>

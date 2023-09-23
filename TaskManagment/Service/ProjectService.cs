@@ -81,22 +81,19 @@ namespace TaskManagment.Service
 
         }
 
-        public List<ProjectAddEditViewModel> GetAll()
+        public List<ProjectListViewModel> GetAll(ProjectListViewModel projectmodel)
         {
-            var data = _iProjectRepository.GetAll();
-            return data.Select(x => new ProjectAddEditViewModel
+            var data = _iProjectRepository.GetAll(projectmodel);
+            var projectlist= data.Select(x => new ProjectListViewModel
             {
                Name = x.Name,
-               Description = x.Description,
-               Picture = x.Picture,
-               TotalPercentage = x.TotalPercentage,
+               WorkerName = String.Join(",", x.Workers.Select(x => x.FirstName))
 
-                
             }).ToList();
 
-
+            return projectlist;
         }
 
-      
+        
     }
 }

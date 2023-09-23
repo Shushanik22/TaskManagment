@@ -1,45 +1,44 @@
 ﻿using TaskManagment.Data.Entities;
 using TaskManagment.Data.Repositories;
 using TaskManagment.Data.Repositories.Interfaces;
+using TaskManagment.ViewModel;
 
 namespace TaskManagment.Data.Repositories
 {
-    public class PTaskRepository:IPTaskRepository
+    public class ProjectTaskRepository:IProjectTaskRepository
     {
         private readonly TaskContext _context;
-        public PTaskRepository  (TaskContext context)
+        
+        public ProjectTaskRepository  (TaskContext context)
         {
             _context = context;
         }
 
-        public void Add(PTask task)
+        public void Add(ProjectTask task)
         {
             _context.Tasks.Add(task);
             _context.SaveChanges();
         }
 
-        public void Delete(PTask task)
+        public void Delete(ProjectTask task)
         {
             _context.Tasks.Remove(task);
             _context.SaveChanges();
         }
 
-        public List<PTask> GetAll()
+        public List<ProjectTask> GetAll(TaskAddEditViewModel model)
         {
            return _context.Tasks.ToList() ;
             
 
         }
 
-        public PTask GetById(int id)
+        public ProjectTask GetById(int id)
         {
             return _context.Tasks.Find(id);
             
         }
 
-        public void SaveChanges()
-        {
-            _context.SaveChanges();
-        }
+        
     }
 }

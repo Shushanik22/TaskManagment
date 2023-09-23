@@ -10,6 +10,6 @@ namespace TaskManagment.Data.Repositories.Interfaces
         void Delete(Worker worker);
         void AttachRange(List<Worker> workers);
         void ChangeTracking(Worker worker);
-        void SaveChanges();
+       
     }
 }
