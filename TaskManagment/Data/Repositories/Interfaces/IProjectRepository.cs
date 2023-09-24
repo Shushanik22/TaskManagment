@@ -7,7 +7,7 @@ namespace TaskManagment.Data.Repositories.Interfaces
     {
         void Add(Project project);
         Project GetById(int id);
-        List<Project> GetAll(ProjectListViewModel model);
+        List<Project> GetAll();
         void Delete(Project project);
       
        

@@ -3,6 +3,7 @@ using TaskManagment.Service;
 using TaskManagment.Interface;
 using Microsoft.Build.Evaluation;
 using TaskManagment.ViewModel;
+using Microsoft.CodeAnalysis;
 
 namespace TaskManagment.Controllers
 {
@@ -20,21 +21,30 @@ namespace TaskManagment.Controllers
 
         }
 
-        public IActionResult Index(ProjectListViewModel model)
+        public IActionResult Index()
         {
-            var list=_iprojectservice.GetAll(model);
+            var list=_iprojectservice.GetAll();
             return View(list);
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public IActionResult AddEdit(int id)
         {
+         
+            var model = _iprojectservice.GetById(id);
+            if (model==null)
+            {
+                GetProductDropdownData();
+                return View();
+            }
             GetProductDropdownData();
-            return View();
+            _iprojectservice.AddEdit(model); ;
+            return View(model);
+
         }
 
         [HttpPost]
-        public IActionResult Add(ProjectAddEditViewModel projectadd /*IFormFile formFile*/)
+        public IActionResult AddEdit(ProjectAddEditViewModel projectadd /*IFormFile formFile*/)
         {
             //if (formFile == null)
             //{
@@ -57,8 +67,8 @@ namespace TaskManagment.Controllers
                 GetProductDropdownData();
                 return View(projectadd);
             }
-            _iprojectservice.Add(projectadd);
-            return RedirectToAction("add");
+            _iprojectservice.AddEdit(projectadd);
+            return RedirectToAction("addedit");
         }
 
         private void GetProductDropdownData()

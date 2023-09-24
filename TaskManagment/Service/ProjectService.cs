@@ -1,4 +1,5 @@
-﻿using TaskManagment.Data;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using TaskManagment.Data;
 using TaskManagment.Data.Entities;
 using TaskManagment.Data.Repositories;
 using TaskManagment.Data.Repositories.Interfaces;
@@ -22,22 +23,33 @@ namespace TaskManagment.Service
              
     }
 
-        public void Add(ProjectAddEditViewModel projectadd)
+        public void AddEdit(ProjectAddEditViewModel projectaddedit)
         {
+            var workers = projectaddedit.WorkerIds.Select(
+                p => new Worker { Id = p }).ToList();
+            
+            var entity = _iProjectRepository.GetById(projectaddedit.Id);
+            if (entity != null)
+            {
+                entity.Description = projectaddedit.Description;
+                entity.Name = projectaddedit.Name;
+                entity.Picture = projectaddedit.Picture;
+                entity.TotalPercentage = projectaddedit.TotalPercentage;
+
+            }
             Project project = new Project
             {
-                Name = projectadd.Name,
-                Description = projectadd.Description,
-                TotalPercentage = projectadd.TotalPercentage,
-                Picture = projectadd.Picture,
+                Name = projectaddedit.Name,
+                Description = projectaddedit.Description,
+                TotalPercentage = projectaddedit.TotalPercentage,
+                Picture = projectaddedit.Picture,
                 
                 
                 // PTaskID
                 // WorkerID relation
 
             };
-            var workers = projectadd.WorkerIds.Select(
-                p => new Worker { Id = p }).ToList();
+            
 
             _workerRepository.AttachRange(workers);
             project.Workers = workers;
@@ -59,35 +71,36 @@ namespace TaskManagment.Service
            
         }
 
-        public void Update(ProjectAddEditViewModel projectadd)
+        //public void Update(ProjectAddEditViewModel projectadd)
+        //{
+        //    var workers = projectadd.WorkerIds.Select(
+        //       p => new Worker { Id = p }).ToList();
+        //    var project = _iProjectRepository.GetById(projectadd.Id);
+        //    project.Picture = projectadd.Picture;
+        //    project.Name = projectadd.Name;
+        //    project.Description = projectadd.Description;
+        //    project.TotalPercentage = projectadd.TotalPercentage;
+        //    foreach (var item in project.Workers)
+        //    {
+        //        _workerRepository.ChangeTracking(item);
+        //    }
+        //    project.Workers.Clear();
+        //    project.Workers = workers;
+        //    _workerRepository.AttachRange(workers);
+        //    _uow.SaveChanges();
+
+
+
+        //}
+
+        public List<ProjectListViewModel> GetAll()
         {
-            var workers = projectadd.WorkerIds.Select(
-               p => new Worker { Id = p }).ToList();
-            var project = _iProjectRepository.GetById(projectadd.Id);
-            project.Picture = projectadd.Picture;
-            project.Name = projectadd.Name;
-            project.Description = projectadd.Description;
-            project.TotalPercentage = projectadd.TotalPercentage;
-            foreach (var item in project.Workers)
-            {
-                _workerRepository.ChangeTracking(item);
-            }
-            project.Workers.Clear();
-            project.Workers = workers;
-            _workerRepository.AttachRange(workers);
-            _uow.SaveChanges();
-
-
-
-        }
-
-        public List<ProjectListViewModel> GetAll(ProjectListViewModel projectmodel)
-        {
-            var data = _iProjectRepository.GetAll(projectmodel);
+            
+            var data = _iProjectRepository.GetAll();
             var projectlist= data.Select(x => new ProjectListViewModel
             {
                Name = x.Name,
-               WorkerName = String.Join(",", x.Workers.Select(x => x.FirstName))
+               WorkerName = String.Join(",", x.Workers?.Select(x => x.FirstName))
 
             }).ToList();
 
