@@ -6,11 +6,13 @@ namespace TaskManagment.Interface
 {
     public interface IProjectService
     {
-        void AddEdit(ProjectAddEditViewModel projectadd);
+        void Add(ProjectAddEditViewModel project);
 
-        ProjectAddEditViewModel GetById(int id);
+        void Delete(ProjectAddEditViewModel project);
 
-       //void Update(ProjectAddEditViewModel projectadd);
+        ProjectAddEditViewModel GetById(int  id);
+
+        void Update(ProjectAddEditViewModel model);
 
         List<ProjectListViewModel> GetAll();
         

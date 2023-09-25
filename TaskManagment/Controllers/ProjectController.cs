@@ -26,26 +26,57 @@ namespace TaskManagment.Controllers
             var list=_iprojectservice.GetAll();
             return View(list);
         }
-
         [HttpGet]
-        public IActionResult AddEdit(int id)
+        public IActionResult Add()
         {
-         
-            var model = _iprojectservice.GetById(id);
-            if (model==null)
-            {
-                GetProductDropdownData();
-                return View();
-            }
             GetProductDropdownData();
-            _iprojectservice.AddEdit(model); ;
-            return View(model);
-
+            return View();
         }
 
         [HttpPost]
-        public IActionResult AddEdit(ProjectAddEditViewModel projectadd /*IFormFile formFile*/)
+        public IActionResult Add(ProjectAddEditViewModel model)
         {
+            if (model.WorkerIds == null || model.WorkerIds.Count == 0)
+            {
+                ModelState.AddModelError(nameof(ProjectAddEditViewModel.WorkerIds), "Please select product categories");
+            }
+            if (!ModelState.IsValid)
+            {
+                GetProductDropdownData();
+                return View(model);
+            }
+            _iprojectservice.Add(model);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var model = _iprojectservice.GetById(id);
+           
+                GetProductDropdownData();
+            return View(model);
+         
+          
+        }
+        
+        [HttpPost]
+        public IActionResult Edit(ProjectAddEditViewModel model)
+        {
+            _iprojectservice.Update(model);
+            return RedirectToAction("Index");
+        }
+
+        
+        public IActionResult Delete(ProjectAddEditViewModel model)
+        {
+            _iprojectservice.Delete(model);
+             return RedirectToAction("Index");
+        }
+
+        //[HttpPost]
+        //public IActionResult AddEdit(ProjectAddEditViewModel projectadd /*IFormFile formFile*/)
+        //{
             //if (formFile == null)
             //{
             //    projectadd.Picture = null;
@@ -57,20 +88,8 @@ namespace TaskManagment.Controllers
             //    projectadd.Picture = fileName;
             //    using var fileStream = new FileStream(path, FileMode.Create);
             //    formFile.CopyTo(fileStream);
-            //}
-            if (projectadd.WorkerIds == null || projectadd.WorkerIds.Count == 0)
-            {
-                ModelState.AddModelError(nameof(ProjectAddEditViewModel.WorkerIds), "Please select product workers");
-            }
-            if (!ModelState.IsValid)
-            {
-                GetProductDropdownData();
-                return View(projectadd);
-            }
-            _iprojectservice.AddEdit(projectadd);
-            return RedirectToAction("addedit");
-        }
-
+        //    //}
+        //    
         private void GetProductDropdownData()
         {
             ViewBag.Workers = _iworkerservice.GetAll();

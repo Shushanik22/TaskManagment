@@ -1,13 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TaskManagment.Data.Repositories.Interfaces;
+using TaskManagment.Interface;
 
 namespace TaskManagment.Controllers
 {
     public class TaskController : Controller
     {
-      
-        public IActionResult Index()
+        private readonly IProjectService _iprojectservice;
+
+        public TaskController(IProjectService iprojectservice)
         {
-            return View();
+            _iprojectservice = iprojectservice;
         }
+        
+
+        public IActionResult Add()
+        {
+
+        }
+
+
+
     }
 }

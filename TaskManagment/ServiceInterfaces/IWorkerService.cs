@@ -6,7 +6,7 @@ namespace TaskManagment.Interface
     {
        // void Add(WorkerAddEditViewModel workeradd);
 
-        //WorkerAddEditViewModel GetById(int id);
+       // WorkerAddEditViewModel GetById(int id);
 
        // void Update(WorkerAddEditViewModel workeradd);
 

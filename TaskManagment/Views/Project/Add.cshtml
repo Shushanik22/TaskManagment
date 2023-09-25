@@ -1,0 +1,65 @@
+﻿@using TaskManagment.ViewModel;
+@model ProjectAddEditViewModel
+@{
+    ViewData["Title"] = "Add";
+
+   
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <h1>Add new Project</h1>
+    <form method="post">
+        <div>
+
+            <label>
+                Project Name
+                <input asp-for="Name" />
+            </label>
+        </div>
+        <div>
+            <label>
+                Project Description
+                <input asp-for="Description" />
+            </label>
+            <div />
+            <div>
+                <label>
+                    Project Picture
+                    <input asp-for="Picture" />
+                </label>
+                <div />
+                <div>
+                    <label>
+                        TotalPercentage
+                        <input asp-for="TotalPercentage" />
+                    </label>
+                </div>
+
+                <div>
+                    @foreach (WorkerAddEditViewModel item in ViewBag.Workers)
+                    {
+                        <div>
+                            <label>
+
+                                <input type="checkbox" value="@item.Id" name="WorkerIds" />
+                                @item.FirstName
+
+
+                            </label>
+                        </div>
+
+
+                    }
+                    <input type="submit" value="Save" />
+                </div>
+
+    </form>
+</body>
+<</html>
+

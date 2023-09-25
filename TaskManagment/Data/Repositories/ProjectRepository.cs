@@ -26,6 +26,11 @@ namespace TaskManagment.Data.Repositories
            
            
         }
+        //public void Update(Project project)
+        //{
+        //    var entity = _context.Projects.FirstOrDefault(p => p.Id == project.Id);
+        //    _context.Projects.Update(entity);
+        //}
 
         public void Delete(Project project)
         {
@@ -41,10 +46,10 @@ namespace TaskManagment.Data.Repositories
 
         public Project GetById(int id)
         {
-            return _context.Projects.Find(id);
+            return _context.Projects.Include(p => p.Workers).
+                FirstOrDefault(p => p.Id == id);
         }
 
-       
-       
+        
     }
 }

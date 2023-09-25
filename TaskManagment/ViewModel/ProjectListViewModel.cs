@@ -6,6 +6,6 @@ namespace TaskManagment.ViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string ? WorkerName { get; set; }
+        public string WorkerName { get; set; }
     }
 }

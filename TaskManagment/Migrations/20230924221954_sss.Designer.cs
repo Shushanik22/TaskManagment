@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskManagment.Data;
 
@@ -11,9 +12,11 @@ using TaskManagment.Data;
 namespace TaskManagment.Migrations
 {
     [DbContext(typeof(TaskContext))]
-    partial class TaskContextModelSnapshot : ModelSnapshot
+    [Migration("20230924221954_sss")]
+    partial class sss
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -149,7 +152,7 @@ namespace TaskManagment.Migrations
             modelBuilder.Entity("TaskManagment.Data.Entities.ProjectTask", b =>
                 {
                     b.HasOne("TaskManagment.Data.Entities.Project", "Project")
-                        .WithMany()
+                        .WithMany("pTasks")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -163,6 +166,11 @@ namespace TaskManagment.Migrations
                     b.Navigation("Project");
 
                     b.Navigation("Worker");
+                });
+
+            modelBuilder.Entity("TaskManagment.Data.Entities.Project", b =>
+                {
+                    b.Navigation("pTasks");
                 });
 #pragma warning restore 612, 618
         }
