@@ -1,10 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using TaskManagment.EnumFolder;
 namespace TaskManagment.Data.Entities
 {
     public class ProjectTask
     {
         public int Id { get; set; }
+
+        [Required]
         public string Title { get; set; }
 
         public string WorkerComment { get; set; }

@@ -26,9 +26,9 @@ namespace TaskManagment.Data.Repositories
             _context.SaveChanges();
         }
 
-        public List<ProjectTask> GetAll(TaskAddEditViewModel model)
+        public List<ProjectTask> GetAll()
         {
-           return _context.Tasks.ToList() ;
+           return _context.Tasks.ToList();
             
 
         }

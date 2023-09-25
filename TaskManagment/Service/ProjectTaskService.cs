@@ -3,12 +3,15 @@ using TaskManagment.Data.Entities;
 using TaskManagment.Data.Repositories.Interfaces;
 using TaskManagment.Interface;
 using TaskManagment.ViewModel;
+using TaskManagment.Data;
 
 namespace TaskManagment.Service
 {
     public class ProjectTaskService : IProjectTaskService
     {
         private readonly IProjectTaskRepository _iptaskrepository;
+        private readonly IUnitOfWork _unitOfWork;
+
 
         public ProjectTaskService(IProjectTaskRepository ipyaskrepository)
         {
@@ -31,6 +34,28 @@ namespace TaskManagment.Service
             };
         }
 
+        public void Delete(TaskAddEditViewModel model)
+        {
+             var querry =  _iptaskrepository.GetById(model.Id);
+            _iptaskrepository.Delete(querry);
+            _unitOfWork.SaveChanges();
+            
+        }
+
+        public List<TaskAddEditViewModel> GetAll()
+        {
+            var taskproject = _iptaskrepository.GetAll();
+            var taskprojectSelect = taskproject.Select(x => new TaskAddEditViewModel
+            {
+                Title = x.Title,
+                Description = x.Description,
+
+
+            }).ToList();
+            return taskprojectSelect;
+
+        }
+
         public TaskAddEditViewModel GetById(int id)
         {
             var ProjectTask  = _iptaskrepository.GetById(id);
@@ -43,20 +68,7 @@ namespace TaskManagment.Service
 
             
         }
-        public List<TaskAddEditViewModel> GetAll(TaskAddEditViewModel model)
-        {
-           var taskproject = _iptaskrepository.GetAll(model);
-            var taskprojectSelect = taskproject.Select(x => new TaskAddEditViewModel
-            {
-                Title = x.Title,
-                Description = x.Description,
-                 
-
-            }).ToList();
-            return taskprojectSelect;
-
-        }
-
+       
        
 
       

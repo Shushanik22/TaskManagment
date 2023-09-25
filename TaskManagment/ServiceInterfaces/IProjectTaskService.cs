@@ -10,7 +10,9 @@ namespace TaskManagment.Interface
 
         void Update(TaskAddEditViewModel taskadd);
 
-        List<TaskAddEditViewModel> GetAll(TaskAddEditViewModel model);
+        List<TaskAddEditViewModel> GetAll();
+
+        void Delete(TaskAddEditViewModel model);
 
     }
 }
