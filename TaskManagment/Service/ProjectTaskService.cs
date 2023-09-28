@@ -10,12 +10,13 @@ namespace TaskManagment.Service
     public class ProjectTaskService : IProjectTaskService
     {
         private readonly IProjectTaskRepository _iptaskrepository;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _uow;
 
 
-        public ProjectTaskService(IProjectTaskRepository ipyaskrepository)
+        public ProjectTaskService(IProjectTaskRepository ipyaskrepository, IUnitOfWork uow)
         {
             _iptaskrepository = ipyaskrepository;
+            _uow = uow;
         }
 
 
@@ -28,17 +29,15 @@ namespace TaskManagment.Service
                 Description = taskadd.Description,
                 Title = taskadd.Title,
 
-
-
-
             };
+            _uow.SaveChanges();
         }
 
         public void Delete(TaskAddEditViewModel model)
         {
              var querry =  _iptaskrepository.GetById(model.Id);
             _iptaskrepository.Delete(querry);
-            _unitOfWork.SaveChanges();
+            _uow.SaveChanges();
             
         }
 
@@ -78,6 +77,7 @@ namespace TaskManagment.Service
             var update = _iptaskrepository.GetById(taskadd.Id);
             update.Title = taskadd.Title;
             update.Description = taskadd.Description;
+            _uow.SaveChanges();
         }
     }
 }

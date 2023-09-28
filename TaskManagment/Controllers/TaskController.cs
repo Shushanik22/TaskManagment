@@ -7,13 +7,13 @@ using TaskManagment.Data;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using TaskManagment.Data.Entities;
 
+
 namespace TaskManagment.Controllers
 {
     public class TaskController : Controller
     {
         private readonly IProjectTaskService _iprojectTaskservice;
-        private readonly TaskContext _context;
-
+     
 
 
         public TaskController(IProjectTaskService iprojectTaskservice)
@@ -35,12 +35,12 @@ namespace TaskManagment.Controllers
             _iprojectTaskservice.GetById(model.Id);
             if (model.Id > 0)
             {
-                // required in html
+                
                 var getallquerry = _iprojectTaskservice.GetAll();
             }
             else
             {
-                _context.Add(model);
+               _iprojectTaskservice.Add(model);
 
             }
             return View();
@@ -54,8 +54,6 @@ namespace TaskManagment.Controllers
         {
             var querryedit = _iprojectTaskservice.GetById(id);
             return View(querryedit);
-
-
         }
         [HttpPost]
         public IActionResult Edit(TaskAddEditViewModel model)

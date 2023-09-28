@@ -54,7 +54,7 @@ namespace TaskManagment.Controllers
         {
             var model = _iprojectservice.GetById(id);
            
-                GetProductDropdownData();
+            GetProductDropdownData();
             return View(model);
          
           
